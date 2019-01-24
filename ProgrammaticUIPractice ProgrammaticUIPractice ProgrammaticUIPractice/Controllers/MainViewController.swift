@@ -10,12 +10,23 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    let mainView = MainView()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
+        self.view.addSubview(mainView)
+        mainView.delegate = self
         
     }
     
+}
 
+extension MainViewController: MainViewDelegate {
+    func seguePressed() {
+        let detail = DetailViewController.init(message: "I hate eveything")
+        navigationController?.pushViewController(detail, animated: true)
+    }
+    
 }
